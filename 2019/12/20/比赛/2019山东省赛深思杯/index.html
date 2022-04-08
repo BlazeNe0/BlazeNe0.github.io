@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="BlazeNe0" />
+
+
+
+<meta name="description" content="复盘一下2019年山东省赛科莱杯的题目，求师傅们指点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019山东省赛深思杯wp">
+<meta property="og:url" content="http://example.com/2019/12/20/%E6%AF%94%E8%B5%9B/2019%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E6%B7%B1%E6%80%9D%E6%9D%AF/index.html">
+<meta property="og:site_name" content="BlazeNe0的小屋">
+<meta property="og:description" content="复盘一下2019年山东省赛科莱杯的题目，求师傅们指点">
+<meta property="og:locale">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/BlazeNe0/Img@main/uPic/image-20220403145028343.png">
+<meta property="article:published_time" content="2019-12-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-08T01:13:14.476Z">
+<meta property="article:author" content="BlazeNe0">
+<meta property="article:tag" content="reverse">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="android">
+<meta property="article:tag" content="pwn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/BlazeNe0/Img@main/uPic/image-20220403145028343.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="BlazeNe0的小屋" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/avatar.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>2019山东省赛深思杯wp | BlazeNe0的小屋</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/about/">关于</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:2532562733@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" rel="noopener" href="https://github.com/BlazeNe0" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crypto/" rel="tag">Crypto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctf/" rel="tag">ctf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reverse/" rel="tag">reverse</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://BlazeNe0.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://www.rayi.vip/">rayi</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">绵绵发力，久久为功</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/about/">关于</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:2532562733@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/BlazeNe0" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-比赛/2019山东省赛深思杯" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/12/20/%E6%AF%94%E8%B5%9B/2019%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E6%B7%B1%E6%80%9D%E6%9D%AF/" class="article-date">
+      <time datetime="2019-12-19T16:00:00.000Z" itemprop="datePublished">2019-12-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2019山东省赛深思杯wp
+    </h1>
+  
+
+        
+          <div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-keyboard-o"></i>
+      <span class="post-meta-item-text">  字数统计: </span>
+      <span class="post-count">1.2k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="fa fa-hourglass-half"></i>
+      <span class="post-meta-item-text">  阅读时长: </span>
+      <span class="post-count">7分</span>
+    </span>
+  </span>
+</div>
+          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ctf/" rel="tag">ctf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reverse/" rel="tag">reverse</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Mobile"><a href="#Mobile" class="headerlink" title="Mobile"></a>Mobile</h3><h4 id="简单apk"><a href="#简单apk" class="headerlink" title="简单apk"></a>简单apk</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sdnisc.mr_hello.apk2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Data</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">check</span><span class="params">(String arg)</span> &#123;</span><br><span class="line">        <span class="type">char</span>[] v0 = arg.toCharArray();</span><br><span class="line">        <span class="type">char</span>[] key = <span class="keyword">new</span> <span class="title class_">char</span>[]&#123;<span class="string">&#x27;S&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;9&#x27;</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span>(v0.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;请输入内容&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">v3</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> i;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; v0.length; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(v0[i] &lt; <span class="number">0x30</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;你的输入应该为纯数字！&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(v0[i] &gt; <span class="number">57</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;你的输入应该为纯数字！&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(v0.length != <span class="number">15</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;出错啦！&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">in</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">while</span>(v3 &lt; arg.length()) &#123;</span><br><span class="line">            in = in + key[arg.charAt(v3) - <span class="number">0x30</span>];</span><br><span class="line">            ++v3;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> in.equals(<span class="string">&quot;sic19Sdc02ds10c&quot;</span>) ? <span class="string">&quot;flag&#123;&quot;</span> + Data.md5(arg) + <span class="string">&quot;&#125;&quot;</span> : <span class="string">&quot;你输入的数字不正确&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">md5</span><span class="params">(String plainText)</span> &#123;</span><br><span class="line">        <span class="type">byte</span>[] v2;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">MessageDigest</span> <span class="variable">md</span> <span class="operator">=</span> MessageDigest.getInstance(<span class="string">&quot;MD5&quot;</span>);</span><br><span class="line">            md.update(plainText.getBytes());</span><br><span class="line">            v2 = md.digest();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(NoSuchAlgorithmException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;没有这个算法！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">md5code</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="number">1</span>, v2).toString(<span class="number">16</span>);</span><br><span class="line">        <span class="type">int</span> i;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">0x20</span> - md5code.length(); ++i) &#123;</span><br><span class="line">            md5code = <span class="string">&quot;0&quot;</span> + md5code;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> md5code;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>![image-20220402163738360](&#x2F;Users&#x2F;ne0&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20220402163738360.png)</p>
+<p>逻辑结构比较简单，就是明文比较</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">key = [<span class="string">&#x27;S&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;9&#x27;</span>]</span><br><span class="line">target = <span class="string">&#x27;sic19Sdc02ds10c&#x27;</span></span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> target:</span><br><span class="line">	<span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">		<span class="keyword">if</span> i == key[n]:</span><br><span class="line">			flag += <span class="built_in">chr</span>(n+<span class="number">0x30</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag&#123;&#x27;</span>+hashlib.md5(flag.encode(<span class="string">&quot;utf-8&quot;</span>)).hexdigest()+<span class="string">&#x27;&#125;&#x27;</span>)</span><br><span class="line"><span class="comment">#flag&#123;fa325b75b81d692dc1bce36cf1b7eb36&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="贪吃蛇"><a href="#贪吃蛇" class="headerlink" title="贪吃蛇"></a>贪吃蛇</h4><p>定位到关键函数Check，发现调用encode加密和md5后，将字符串key进行明文比较</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sdnisc.mr_hello.apk1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Check</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">check</span><span class="params">(<span class="type">int</span> code, <span class="type">int</span> arg1, <span class="type">int</span> arg2)</span> &#123;</span><br><span class="line">        <span class="type">return</span> <span class="variable">code</span> <span class="operator">=</span>= <span class="number">90</span> ? <span class="built_in">this</span>.encrypt(code, arg1, arg2) : <span class="string">&quot;Score is too low&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">encrypt</span><span class="params">(<span class="type">int</span> score, <span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        <span class="type">byte</span>[] v2_1;</span><br><span class="line">        <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> String.valueOf(score) + String.valueOf(x) + String.valueOf(y);</span><br><span class="line">        <span class="keyword">if</span>(key.length() == <span class="number">8</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                v2_1 = MessageDigest.getInstance(<span class="string">&quot;md5&quot;</span>).digest(encode.encode(key).getBytes());</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;没有这个md5算法！&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="number">1</span>, v2_1).toString(<span class="number">16</span>);</span><br><span class="line">            <span class="type">int</span> i;</span><br><span class="line">            <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">0x20</span> - str.length(); ++i) &#123;</span><br><span class="line">                str = <span class="string">&quot;0&quot;</span> + str;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> str.equals(<span class="string">&quot;cc3fa9c107c0d8b48d6af32d26eacf2a&quot;</span>) ? <span class="string">&quot;flag&#123;&quot;</span> + key + <span class="string">&quot;&#125;&quot;</span> : <span class="string">&quot;something wrong&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;something wrong&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>encode函数实际上是base64加密</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sdnisc.mr_hello.apk1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">encode</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">Code</span> <span class="operator">=</span> <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">encode</span><span class="params">(String srcStr)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(srcStr != <span class="literal">null</span> &amp;&amp; srcStr.length() != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="type">char</span>[] srcStrCh = srcStr.toCharArray();</span><br><span class="line">            <span class="type">StringBuilder</span> <span class="variable">asciiBinStrB</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">            <span class="type">int</span> i;</span><br><span class="line">            <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; srcStrCh.length; ++i) &#123;</span><br><span class="line">                String v4;</span><br><span class="line">                <span class="keyword">for</span>(v4 = Integer.toBinaryString(srcStrCh[i]); v4.length() &lt; <span class="number">8</span>; v4 = <span class="string">&quot;0&quot;</span> + v4) &#123;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                asciiBinStrB.append(v4);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(asciiBinStrB.length() % <span class="number">6</span> != <span class="number">0</span>) &#123;</span><br><span class="line">                asciiBinStrB.append(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">asciiBinStr</span> <span class="operator">=</span> String.valueOf(asciiBinStrB);</span><br><span class="line">            <span class="type">char</span>[] codeCh = <span class="keyword">new</span> <span class="title class_">char</span>[asciiBinStr.length() / <span class="number">6</span>];</span><br><span class="line">            <span class="type">String</span> <span class="variable">v7</span> <span class="operator">=</span> asciiBinStr;</span><br><span class="line">            <span class="type">int</span> i;</span><br><span class="line">            <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; codeCh.length; ++i) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">v8</span> <span class="operator">=</span> Integer.parseInt(v7.substring(<span class="number">0</span>, <span class="number">6</span>), <span class="number">2</span>);</span><br><span class="line">                v7 = v7.substring(<span class="number">6</span>);</span><br><span class="line">                codeCh[i] = <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>.charAt(v8);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="type">StringBuilder</span> <span class="variable">code</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(String.valueOf(codeCh));</span><br><span class="line">            <span class="keyword">if</span>(srcStr.length() % <span class="number">3</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                code.append(<span class="string">&quot;==&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(srcStr.length() % <span class="number">3</span> == <span class="number">2</span>) &#123;</span><br><span class="line">                code.append(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="type">int</span> i;</span><br><span class="line">            <span class="keyword">for</span>(i = <span class="number">76</span>; i &lt; code.length(); i += <span class="number">76</span>) &#123;</span><br><span class="line">                code.insert(i, <span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> String.valueOf(code);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> srcStr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据流程构造exp如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">target = <span class="string">&#x27;cc3fa9c107c0d8b48d6af32d26eacf2a&#x27;</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>,<span class="number">999</span>):</span><br><span class="line">	<span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>,<span class="number">999</span>):</span><br><span class="line">		key = <span class="string">&#x27;90&#x27;</span> + <span class="built_in">str</span>(x) + <span class="built_in">str</span>(y)</span><br><span class="line">		tmp = hashlib.md5(base64.b64encode(key)).hexdigest()</span><br><span class="line">		<span class="keyword">if</span> tmp == target:</span><br><span class="line">			<span class="built_in">print</span>(<span class="string">&#x27;flag&#123;&#x27;</span>+key+<span class="string">&#x27;&#125;&#x27;</span>)</span><br><span class="line"><span class="comment">#flag&#123;90585675&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="LargeCheck"><a href="#LargeCheck" class="headerlink" title="LargeCheck"></a>LargeCheck</h4><h3 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h3><h4 id="python是世界上最好的语言"><a href="#python是世界上最好的语言" class="headerlink" title="python是世界上最好的语言"></a>python是世界上最好的语言</h4><p>修改pyc文件头为03f3，uncompyle6反编译为python文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># uncompyle6 version 3.7.4</span></span><br><span class="line"><span class="comment"># Python bytecode 2.7 (62211)</span></span><br><span class="line"><span class="comment"># Decompiled from: Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 19 2020, 20:48:48) </span></span><br><span class="line"><span class="comment"># [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.57)]</span></span><br><span class="line"><span class="comment"># Embedded file name: flag.py</span></span><br><span class="line"><span class="comment"># Compiled at: 2019-10-21 14:01:56</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">flag = <span class="string">&#x27;flag&#123;**********************&#125;&#x27;</span></span><br><span class="line">Sd = []</span><br><span class="line">SdSd = []</span><br><span class="line"><span class="keyword">for</span> SdSdSdSd <span class="keyword">in</span> flag:</span><br><span class="line">    Sd.append(<span class="built_in">ord</span>(SdSdSdSd))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">SdSdSd</span>):</span><br><span class="line">    SdSdSdSdSd = <span class="literal">True</span></span><br><span class="line">    SdSdSdSd = <span class="number">2</span></span><br><span class="line">    sq = <span class="built_in">int</span>(math.sqrt(SdSdSd)) + <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> SdSdSdSd &lt;= sq:</span><br><span class="line">        <span class="keyword">if</span> SdSdSd % SdSdSdSd == <span class="number">0</span>:</span><br><span class="line">            SdSd.append(SdSdSdSd + <span class="number">1</span>)</span><br><span class="line">            SdSdSdSdSd = <span class="literal">False</span></span><br><span class="line">            func(SdSdSd / SdSdSdSd)</span><br><span class="line">            SdSdSdSd += <span class="number">1</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        SdSdSdSd += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> SdSdSdSdSd:</span><br><span class="line">        SdSd.append(SdSdSd + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> SdSdSdSd <span class="keyword">in</span> Sd:</span><br><span class="line">    func(SdSdSdSd)</span><br><span class="line">    <span class="built_in">print</span> SdSd,</span><br><span class="line">    SdSd = []</span><br><span class="line"><span class="comment"># okay decompiling flag.pyc</span></span><br></pre></td></tr></table></figure>
+
+<p>根据输出逆向分析func函数比较麻烦，并且数据并不是很大，flag也是常见的可见字符，所以尝试爆破：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">output = [[<span class="number">3</span>, <span class="number">4</span>, <span class="number">18</span>], [<span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>], [<span class="number">98</span>], [<span class="number">104</span>], [<span class="number">4</span>, <span class="number">42</span>], [<span class="number">102</span>], [<span class="number">3</span>, <span class="number">8</span>, <span class="number">8</span>], [<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">4</span>, <span class="number">4</span>, <span class="number">12</span>], [<span class="number">3</span>, <span class="number">4</span>, <span class="number">18</span>], [<span class="number">3</span>, <span class="number">6</span>, <span class="number">6</span>], [<span class="number">3</span>, <span class="number">4</span>, <span class="number">18</span>], [<span class="number">8</span>, <span class="number">8</span>], [<span class="number">3</span>, <span class="number">8</span>, <span class="number">8</span>], [<span class="number">3</span>, <span class="number">4</span>, <span class="number">18</span>], [<span class="number">4</span>, <span class="number">4</span>, <span class="number">12</span>], [<span class="number">4</span>, <span class="number">20</span>], [<span class="number">4</span>, <span class="number">20</span>], [<span class="number">4</span>, <span class="number">20</span>], [<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">102</span>], [<span class="number">102</span>], [<span class="number">4</span>, <span class="number">18</span>], [<span class="number">3</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">6</span>], [<span class="number">4</span>, <span class="number">18</span>], [<span class="number">4</span>, <span class="number">20</span>], [<span class="number">4</span>, <span class="number">20</span>], [<span class="number">98</span>], [<span class="number">3</span>, <span class="number">6</span>, <span class="number">6</span>], [<span class="number">3</span>, <span class="number">8</span>, <span class="number">8</span>], [<span class="number">3</span>, <span class="number">8</span>, <span class="number">8</span>], [<span class="number">3</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">6</span>], [<span class="number">102</span>], [<span class="number">4</span>, <span class="number">18</span>], [<span class="number">3</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">6</span>], [<span class="number">3</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">6</span>], [<span class="number">3</span>, <span class="number">3</span>, <span class="number">14</span>], [<span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>]]</span><br><span class="line"></span><br><span class="line">target = <span class="string">&#x27;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#123;+-*/&#125;&#x27;</span></span><br><span class="line">tmp = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> target:</span><br><span class="line">	tmp.append(<span class="built_in">ord</span>(i))</span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line">SdSd = []</span><br><span class="line">src = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">SdSdSd</span>):</span><br><span class="line">    SdSdSdSdSd = <span class="literal">True</span></span><br><span class="line">    SdSdSdSd = <span class="number">2</span></span><br><span class="line">    sq = <span class="built_in">int</span>(math.sqrt(SdSdSd)) + <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> SdSdSdSd &lt;= sq:</span><br><span class="line">        <span class="keyword">if</span> SdSdSd % SdSdSdSd == <span class="number">0</span>:</span><br><span class="line">            SdSd.append(SdSdSdSd + <span class="number">1</span>)</span><br><span class="line">            SdSdSdSdSd = <span class="literal">False</span></span><br><span class="line">            func(SdSdSd / SdSdSdSd)</span><br><span class="line">            SdSdSdSd += <span class="number">1</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        SdSdSdSd += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> SdSdSdSdSd:</span><br><span class="line">        SdSd.append(SdSdSd + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> tmp:</span><br><span class="line">	func(i)</span><br><span class="line">	src.append(SdSd)</span><br><span class="line">	SdSd = []</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> output:</span><br><span class="line">	<span class="keyword">for</span> m <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(src)):</span><br><span class="line">		<span class="keyword">if</span> n == src[m]:</span><br><span class="line">			flag += <span class="built_in">chr</span>(tmp[m])</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br><span class="line"><span class="comment">#flag&#123;eb0cf2f1bfc9990ee3d399a2bbde3dd4&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Fuqiang"><a href="#Fuqiang" class="headerlink" title="Fuqiang"></a>Fuqiang</h4><h4 id="Hexie"><a href="#Hexie" class="headerlink" title="Hexie"></a>Hexie</h4><h3 id="Pwn"><a href="#Pwn" class="headerlink" title="Pwn"></a>Pwn</h3><h4 id="Minzhu"><a href="#Minzhu" class="headerlink" title="Minzhu"></a>Minzhu</h4><p><img src="https://cdn.jsdelivr.net/gh/BlazeNe0/Img@main/uPic/image-20220403145028343.png" alt="image-20220403145028343"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/12/20/%E6%AF%94%E8%B5%9B/2019%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E6%B7%B1%E6%80%9D%E6%9D%AF/">2019山东省赛深思杯wp</a></p>
+        <p><span>文章作者:</span>BlazeNe0</p>
+        <p><span>发布时间:</span>2019-12-20, 00:00:00</p>
+        <p><span>最后更新:</span>2022-04-08, 09:13:14</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/12/20/%E6%AF%94%E8%B5%9B/2019%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E6%B7%B1%E6%80%9D%E6%9D%AF/" title="2019山东省赛深思杯wp">http://example.com/2019/12/20/%E6%AF%94%E8%B5%9B/2019%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E6%B7%B1%E6%80%9D%E6%9D%AF/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://example.com/2019/12/20/%E6%AF%94%E8%B5%9B/2019%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E6%B7%B1%E6%80%9D%E6%9D%AF/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/04/01/crypto/Lattice/Hidden%20number%20problem/">
+                    AES&amp;CBC
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/08/20/%E6%AF%94%E8%B5%9B/2018%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E7%A7%91%E6%9D%A5%E6%9D%AF/">
+                    2018山东省赛科来杯wp
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mobile"><span class="toc-number">1.</span> <span class="toc-text">Mobile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95apk"><span class="toc-number">1.1.</span> <span class="toc-text">简单apk</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%AA%E5%90%83%E8%9B%87"><span class="toc-number">1.2.</span> <span class="toc-text">贪吃蛇</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LargeCheck"><span class="toc-number">1.3.</span> <span class="toc-text">LargeCheck</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reverse"><span class="toc-number">2.</span> <span class="toc-text">Reverse</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python%E6%98%AF%E4%B8%96%E7%95%8C%E4%B8%8A%E6%9C%80%E5%A5%BD%E7%9A%84%E8%AF%AD%E8%A8%80"><span class="toc-number">2.1.</span> <span class="toc-text">python是世界上最好的语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fuqiang"><span class="toc-number">2.2.</span> <span class="toc-text">Fuqiang</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hexie"><span class="toc-number">2.3.</span> <span class="toc-text">Hexie</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pwn"><span class="toc-number">3.</span> <span class="toc-text">Pwn</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Minzhu"><span class="toc-number">3.1.</span> <span class="toc-text">Minzhu</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"2019山东省赛深思杯wp　| BlazeNe0的小屋　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/04/01/crypto/Lattice/Hidden%20number%20problem/" title="上一篇: AES&amp;CBC">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/08/20/%E6%AF%94%E8%B5%9B/2018%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E7%A7%91%E6%9D%A5%E6%9D%AF/" title="下一篇: 2018山东省赛科来杯wp">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/08/21/reverse/reverse%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">reverse逆向基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/crypto/Lattice/Hidden%20number%20problem/">AES&CBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/20/%E6%AF%94%E8%B5%9B/2019%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E6%B7%B1%E6%80%9D%E6%9D%AF/">2019山东省赛深思杯wp</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/20/%E6%AF%94%E8%B5%9B/2018%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E7%A7%91%E6%9D%A5%E6%9D%AF/">2018山东省赛科来杯wp</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2022 BlazeNe0
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 1;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+             tags: ".article-tag a", 
+             categories: ".article-category a, a.tag-list-link", 
+             articleNav: "#article-nav a, #post-nav-button a", 
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

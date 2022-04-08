@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="BlazeNe0" />
+
+
+
+<meta name="description" content="简单的逆向学习基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="reverse逆向基础">
+<meta property="og:url" content="http://example.com/2020/08/21/reverse/reverse%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="BlazeNe0的小屋">
+<meta property="og:description" content="简单的逆向学习基础">
+<meta property="og:locale">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/BlazeNe0/Img@main/uPic/1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/BlazeNe0/Img@main/uPic/2.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/BlazeNe0/Img@main/uPic/%E6%A0%88%E7%BB%93%E6%9E%84.png">
+<meta property="article:published_time" content="2020-08-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-08T01:06:39.444Z">
+<meta property="article:author" content="BlazeNe0">
+<meta property="article:tag" content="reverse">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/BlazeNe0/Img@main/uPic/1.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="BlazeNe0的小屋" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/avatar.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>reverse逆向基础 | BlazeNe0的小屋</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章</a></li>
+                        
+                            <li><a href="/tags/">标签</a></li>
+                        
+                            <li><a href="/about/">关于</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:2532562733@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" rel="noopener" href="https://github.com/BlazeNe0" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crypto/" rel="tag">Crypto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctf/" rel="tag">ctf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reverse/" rel="tag">reverse</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://BlazeNe0.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://www.rayi.vip/">rayi</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">绵绵发力，久久为功</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章</a></li>
+                
+                    <li><a href="/tags/">标签</a></li>
+                
+                    <li><a href="/about/">关于</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:2532562733@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/BlazeNe0" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-reverse/reverse学习基础" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/08/21/reverse/reverse%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="article-date">
+      <time datetime="2020-08-20T16:00:00.000Z" itemprop="datePublished">2020-08-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      reverse逆向基础
+    </h1>
+  
+
+        
+          <div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-keyboard-o"></i>
+      <span class="post-meta-item-text">  字数统计: </span>
+      <span class="post-count">933字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="fa fa-hourglass-half"></i>
+      <span class="post-meta-item-text">  阅读时长: </span>
+      <span class="post-count">3分</span>
+    </span>
+  </span>
+</div>
+          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reverse/" rel="tag">reverse</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h3><h4 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h4><p>1.esp：栈指针寄存器(extended stack pointer)，其内存放着一个指针，该指针永远指向系统栈最上面一个栈帧的栈顶。</p>
+<p>2.ebp：基址指针寄存器(extended base pointer)，其内存放着一个指针，该指针永远指向系统栈最上面一个栈帧的底部。</p>
+<p>3.eax 是”累加器”(accumulator), 它是很多加法乘法指令的缺省寄存器。</p>
+<p>4.ebx 是”基地址”(base)寄存器, 在内存寻址时存放基地址</p>
+<p>5.ecx 是计数器(counter), 是重复(REP)前缀指令和LOOP指令的内定计数器。</p>
+<p>6.edx 则总是被用来放整数除法产生的余数。</p>
+<p>7.esi&#x2F;edi分别叫做”源&#x2F;目标索引寄存器”(source&#x2F;destination index),因为在很多字符串操作指令中, DS:ESI指向源串,而ES:EDI指向目标串. mov eax, [ebx+esi] </p>
+<p><img src="https://cdn.jsdelivr.net/gh/BlazeNe0/Img@main/uPic/1.png" alt="1"><img src="https://cdn.jsdelivr.net/gh/BlazeNe0/Img@main/uPic/2.png" alt="1"></p>
+<h4 id="基本汇编指令"><a href="#基本汇编指令" class="headerlink" title="基本汇编指令"></a>基本汇编指令</h4><p>mov 赋值</p>
+<p>lea 传送(赋地址)</p>
+<p>add&#x2F;sub&#x2F;xor&#x2F;shl&#x2F;shr&#x2F;inc(递增)&#x2F;dec(递减) 各种运算</p>
+<p>jmp 跳转</p>
+<p>push&#x2F;pop 压栈&#x2F;出栈</p>
+<p>call 调用子函数 &#x3D;&#x3D; push eip ; jmp sub</p>
+<p>leave恢复主调函数的栈帧以准备返回 &#x3D;&#x3D;    mov    ebp,    esp ;    pop    ebp</p>
+<p>ret 从子函数返回 &#x3D;&#x3D; pop eip</p>
+<h4 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h4><p>立即数寻址：mov eax, 0x1 </p>
+<p>寄存器寻址：mov eax, ebx</p>
+<p>直接寻址：mov eax, [2000h] </p>
+<p>寄存器间接寻址：mov eax, [ebx] </p>
+<p>基址变址寻址：mov eax, [ebx+esi] </p>
+<p>寄存器相对寻址：mov eax, [ebx+100h] </p>
+<p>相对基址变址寻址：mov eax, [ebx+esi+100h] </p>
+<p>比例变址寻址：mov eax, [ebx+4*ecx]</p>
+<h3 id="栈结构"><a href="#栈结构" class="headerlink" title="栈结构"></a>栈结构</h3><p>栈是一种先进后出的数据结构，基本操作是push和pop。通常有一个栈底指针(bp)和一个栈顶指针(sp)指示位置。</p>
+<p>在子函数头部大部分会有三类指令</p>
+<p>1.push rbp 将rbp压栈</p>
+<p>2.mov rbp, rsp 将上一个栈帧的栈顶作为下一个栈帧的栈底</p>
+<p>3.sub rsp, xx 令栈顶增长，开辟栈帧</p>
+<p>4.mov [rbp+xx], rbx 保存环境</p>
+<p>栈帧由高地址向低地址增长，因此增长栈顶使用 sub 指令</p>
+<p><img src="https://cdn.jsdelivr.net/gh/BlazeNe0/Img@main/uPic/%E6%A0%88%E7%BB%93%E6%9E%84.png" alt="栈结构"></p>
+<h3 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h3><h4 id="数据类型及占用空间"><a href="#数据类型及占用空间" class="headerlink" title="数据类型及占用空间"></a>数据类型及占用空间</h4><h5 id="有符号整数类型"><a href="#有符号整数类型" class="headerlink" title="有符号整数类型"></a>有符号整数类型</h5><table>
+<thead>
+<tr>
+<th align="center">signed char</th>
+<th align="center">1byte</th>
+<th align="center">-2^7 ~ 2^7-1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">short int 或short</td>
+<td align="center">2bytes</td>
+<td align="center">-2^15 ~ 2^15-1</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">4bytes</td>
+<td align="center">-2^31 ~ 2^31-1</td>
+</tr>
+<tr>
+<td align="center">long int或long</td>
+<td align="center">4bytes</td>
+<td align="center">-2^31 ~ 2^31-1</td>
+</tr>
+<tr>
+<td align="center">long long int或long long</td>
+<td align="center">8bytes</td>
+<td align="center">-2^63 ~ 2^63-1</td>
+</tr>
+</tbody></table>
+<h5 id="无符号整数类型"><a href="#无符号整数类型" class="headerlink" title="无符号整数类型"></a>无符号整数类型</h5><table>
+<thead>
+<tr>
+<th align="center">signed char</th>
+<th align="center">1byte</th>
+<th align="center">0~2^8-1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">short int 或short</td>
+<td align="center">2bytes</td>
+<td align="center">0~2^16-1</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">4bytes</td>
+<td align="center">0~2^32-1</td>
+</tr>
+<tr>
+<td align="center">long int或long</td>
+<td align="center">4bytes</td>
+<td align="center">0~2^32-1</td>
+</tr>
+<tr>
+<td align="center">long long int或long long</td>
+<td align="center">8bytes</td>
+<td align="center">0~2^64-1</td>
+</tr>
+</tbody></table>
+<h5 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h5><table>
+<thead>
+<tr>
+<th align="center">float</th>
+<th align="center">4bytes</th>
+<th align="center">精确到6位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">double</td>
+<td align="center">8bytes</td>
+<td align="center">精确到15位</td>
+</tr>
+<tr>
+<td align="center">long double</td>
+<td align="center">12bytes</td>
+<td align="center">精确到18位</td>
+</tr>
+</tbody></table>
+<h4 id="函数参数传递"><a href="#函数参数传递" class="headerlink" title="函数参数传递"></a>函数参数传递</h4><table>
+<thead>
+<tr>
+<th align="center">传值</th>
+<th align="center">传指针</th>
+<th align="center">传引用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">void function(int <code>x</code>){代码块}</td>
+<td align="center">void function(int <code>*x</code>){代码块}</td>
+<td align="center">void function(int <code>&amp;x</code>){代码块}</td>
+</tr>
+<tr>
+<td align="center">传递的为值,函数内用的是实参的副本，故<code>不能</code>修改实参的值</td>
+<td align="center">传递的地址, 可以修改实参的值，指针是实体</td>
+<td align="center">传递实参的指针(地址)，可以修改实参的值，引用是别名</td>
+</tr>
+</tbody></table>
+<h4 id="函数调用约定"><a href="#函数调用约定" class="headerlink" title="函数调用约定"></a>函数调用约定</h4><table>
+<thead>
+<tr>
+<th align="center">cdecl (default)</th>
+<th align="center">stdcall</th>
+<th align="center">fastcall</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">int func(int x,int y)<br>int __cdecl func(int x,int y)</td>
+<td align="center">int _stdcall func(int x,int y)</td>
+<td align="center">int fastcall func(int x,int y)</td>
+</tr>
+<tr>
+<td align="center">参数入栈顺序：从右到左<br> 还原栈者：调用者修改栈 <br>函数名：前加下划线：_func</td>
+<td align="center">参数入栈顺序：从右向左<br>还原栈者：被调用函数自身修改栈<br>函数名:    _function@arg_size</td>
+<td align="center">参数入栈顺序：第一二参数不压栈,ecx,edx, 从右到左<br>还原栈者：被调用者修改栈<br>函数名格式:    _function@arg_size</td>
+</tr>
+<tr>
+<td align="center">通过栈(32 bit)<br>rdi,rsi,rdx(64bit)</td>
+<td align="center">通过栈(32 bit)<br>rdi,rsi,rdx(64bit)</td>
+<td align="center">通过栈(32 bit)<br>rdx,rcx,…(64bit)</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/08/21/reverse/reverse%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">reverse逆向基础</a></p>
+        <p><span>文章作者:</span>BlazeNe0</p>
+        <p><span>发布时间:</span>2020-08-21, 00:00:00</p>
+        <p><span>最后更新:</span>2022-04-08, 09:06:39</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/08/21/reverse/reverse%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" title="reverse逆向基础">http://example.com/2020/08/21/reverse/reverse%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://example.com/2020/08/21/reverse/reverse%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/04/01/crypto/Lattice/Hidden%20number%20problem/">
+                    AES&amp;CBC
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">汇编语言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.1.</span> <span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">基本汇编指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">寻址方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">栈结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80"><span class="toc-number">3.</span> <span class="toc-text">C语言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%8D%A0%E7%94%A8%E7%A9%BA%E9%97%B4"><span class="toc-number">3.1.</span> <span class="toc-text">数据类型及占用空间</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.1.1.</span> <span class="toc-text">有符号整数类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.1.2.</span> <span class="toc-text">无符号整数类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.1.3.</span> <span class="toc-text">浮点类型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-number">3.2.</span> <span class="toc-text">函数参数传递</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="toc-number">3.3.</span> <span class="toc-text">函数调用约定</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"reverse逆向基础　| BlazeNe0的小屋　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/04/01/crypto/Lattice/Hidden%20number%20problem/" title="下一篇: AES&amp;CBC">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/08/21/reverse/reverse%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">reverse逆向基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/crypto/Lattice/Hidden%20number%20problem/">AES&CBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/20/%E6%AF%94%E8%B5%9B/2019%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E6%B7%B1%E6%80%9D%E6%9D%AF/">2019山东省赛深思杯wp</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/20/%E6%AF%94%E8%B5%9B/2018%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E7%A7%91%E6%9D%A5%E6%9D%AF/">2018山东省赛科来杯wp</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2022 BlazeNe0
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 1;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+             tags: ".article-tag a", 
+             categories: ".article-category a, a.tag-list-link", 
+             articleNav: "#article-nav a, #post-nav-button a", 
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
